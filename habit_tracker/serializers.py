@@ -1,9 +1,6 @@
 from rest_framework import serializers
-from rest_framework.relations import SlugRelatedField
 
 from habit_tracker.models import PleasantHabit, GoodHabit
-from users.models import User
-from users.serializers import UserSerializer
 
 
 class PleasantHabitSerializer(serializers.ModelSerializer):
@@ -17,7 +14,6 @@ class PleasantHabitSerializer(serializers.ModelSerializer):
 class GoodHabitSerializer(serializers.ModelSerializer):
     """Сериализатор представления полезной привычки"""
 
-    user = SlugRelatedField(slug_field='email', queryset=User.objects.all())
     pleasant_habit = PleasantHabitSerializer()
 
     class Meta:
