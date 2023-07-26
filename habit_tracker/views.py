@@ -2,7 +2,8 @@ from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 from habit_tracker.models import PleasantHabit, GoodHabit
 from habit_tracker.permissions import IsOwner
-from habit_tracker.serializers import PleasantHabitSerializer, GoodHabitSerializer
+from habit_tracker.serializers import PleasantHabitSerializer, GoodHabitListSerializer, \
+    GoodHabitSerializer
 
 
 class PleasantHabitViewSet(viewsets.ModelViewSet):
@@ -28,7 +29,7 @@ class PleasantHabitIsPublishedListAPIViewSet(generics.ListAPIView):
 
 
 class GoodHabitListAPIView(generics.ListAPIView):
-    serializer_class = GoodHabitSerializer
+    serializer_class = GoodHabitListSerializer
     queryset = GoodHabit.objects.all()
     permission_classes = [IsAuthenticated]
 
@@ -41,7 +42,7 @@ class GoodHabitListAPIView(generics.ListAPIView):
 
 
 class GoodHabitIsPublishedListAPIView(generics.ListAPIView):
-    serializer_class = GoodHabitSerializer
+    serializer_class = GoodHabitListSerializer
     queryset = GoodHabit.objects.filter(is_published=True)
     permission_classes = [IsAuthenticated]
 
