@@ -17,7 +17,7 @@ class Habit(models.Model):
     place = models.CharField(max_length=150, verbose_name='место')
     time = models.TimeField(verbose_name='время')
     action = models.CharField(max_length=150, unique=True, verbose_name='действие')
-    duration = models.IntegerField(default=120, verbose_name='длительность выполнений в секундах')
+    duration = models.PositiveIntegerField(default=120, verbose_name='длительность выполнений в секундах')
     is_published = models.BooleanField(default=True, verbose_name='признак публичности привычки')
 
 
