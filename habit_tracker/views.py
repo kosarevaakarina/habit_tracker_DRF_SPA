@@ -1,6 +1,7 @@
 from rest_framework import viewsets, generics
 from rest_framework.permissions import IsAuthenticated
 from habit_tracker.models import PleasantHabit, GoodHabit
+from habit_tracker.paginations import HabitPagination
 from habit_tracker.permissions import IsOwner
 from habit_tracker.serializers import PleasantHabitSerializer, GoodHabitListSerializer, \
     GoodHabitSerializer
@@ -10,6 +11,7 @@ class PleasantHabitViewSet(viewsets.ModelViewSet):
     serializer_class = PleasantHabitSerializer
     queryset = PleasantHabit.objects.all()
     permission_classes = [IsAuthenticated, IsOwner]
+    pagination_class = HabitPagination
 
     def get_queryset(self):
         user = self.request.user
@@ -32,6 +34,7 @@ class GoodHabitListAPIView(generics.ListAPIView):
     serializer_class = GoodHabitListSerializer
     queryset = GoodHabit.objects.all()
     permission_classes = [IsAuthenticated]
+    pagination_class = HabitPagination
 
     def get_queryset(self):
         user = self.request.user
