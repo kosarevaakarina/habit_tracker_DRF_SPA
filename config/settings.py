@@ -26,8 +26,13 @@ INSTALLED_APPS = [
 
     # drf
     'rest_framework',
+    'django_celery_beat',
+    'drf_yasg',
 
-    # localhost
+    # cors
+    'corsheaders',
+
+    # local apps
     'habit_tracker',
     'users'
 ]
@@ -40,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -137,3 +143,10 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Moscow'
+
+# Telegram bot api
+TELEGRAM_BOT_API = os.getenv("TELEGRAM_BOT_API")
+
+# CORS
+CORS_ALLOWED_ORIGINS = ['http://localhost:5001']
+CORS_ALLOW_ALL_ORIGINS = False
