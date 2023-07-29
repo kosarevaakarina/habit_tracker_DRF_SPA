@@ -4,6 +4,7 @@ from users.models import User
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
+    """Сериализатор для регистрации пользователя"""
     password2 = serializers.CharField()
 
     class Meta:
@@ -42,6 +43,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Сериализатор для пользователя (просмотр, изменение, удаление)"""
     class Meta:
         model = User
         fields = ('email', 'tg_username', 'name', 'phone', 'city', 'avatar')
