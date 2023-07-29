@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 
 class HabitDurationValidator:
-    """Время выполнения должно быть не больше 120 секунд"""
+    """Время выполнения должно быть не менее 0 и не более 120 секунд """
 
     def __init__(self, field):
         self.field = field

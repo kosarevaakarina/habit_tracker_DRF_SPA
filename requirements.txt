@@ -1,9 +1,7 @@
 django
 djangorestframework
-pillow
 psycopg2-binary
 python-dotenv
-django-filter
 djangorestframework-simplejwt
 coverage
 drf-yasg
@@ -11,3 +9,6 @@ requests
 redis
 celery
 django-celery-beat
+aiogram
+flake8
+django-cors-headers

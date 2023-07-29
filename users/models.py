@@ -41,7 +41,7 @@ class User(AbstractUser):
     """Модель, описывающая пользователя"""
     username = None
     email = models.EmailField(unique=True, verbose_name='почта')
-    tg_username = models.CharField(max_length=150, **NULLABLE, verbose_name='никнейм в телеграме')
+    tg_username = models.CharField(max_length=150, unique=True, verbose_name='никнейм в телеграме')
     tg_chat_id = models.CharField(max_length=150, **NULLABLE, verbose_name='ID чата в телеграм')
     name = models.CharField(max_length=50, verbose_name='имя', **NULLABLE)
     phone = models.CharField(max_length=50, verbose_name='телефон', **NULLABLE)

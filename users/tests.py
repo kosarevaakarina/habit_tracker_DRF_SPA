@@ -1,4 +1,3 @@
-from django.test import TestCase
 from rest_framework import status
 
 from habit_tracker.tests import UserCreate
@@ -15,7 +14,7 @@ class UserTestCase(UserCreate):
         self.assertEqual(
             response.json(),
             [{'email': 'example@test.ru',
-              'tg_username': None,
+              'tg_username': 'telegramtest',
               'name': None,
               'phone': None,
               'city': None,
@@ -30,7 +29,7 @@ class UserTestCase(UserCreate):
         self.assertEqual(
             response.json(),
             {'email': 'example@test.ru',
-             'tg_username': None,
+             'tg_username': 'telegramtest',
              'name': None,
              'phone': None,
              'city': None,
@@ -42,13 +41,13 @@ class UserTestCase(UserCreate):
         """Тестирование обновления пользователя"""
         self.create_user()
         response = self.client.patch(f'/users/update/{self.user.id}/', {'email': 'newexample@sky.pro',
-                                                                        'name': 'test'
-                                                                        })
+                                                                        'tg_username': 'newtelegram',
+                                                                        'name': 'test'})
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.json(),
             {'email': 'newexample@sky.pro',
-             'tg_username': None,
+             'tg_username': 'newtelegram',
              'name': 'test',
              'phone': None,
              'city': None,

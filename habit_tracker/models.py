@@ -1,8 +1,8 @@
 from django.db import models
-
 from config import settings
 
 NULLABLE = {'blank': True, 'null': True}
+
 FREQUENCY = [
     ('EVERY DAY', 'раз в день'),
     ('EVERY OTHER DAY', 'через день'),
@@ -15,6 +15,7 @@ class Habit(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='создатель привычки',
                              **NULLABLE)
     place = models.CharField(max_length=150, verbose_name='место')
+    date = models.DateField(auto_now_add=True, verbose_name='дата создания')
     time = models.TimeField(verbose_name='время')
     action = models.CharField(max_length=150, unique=True, verbose_name='действие')
     duration = models.PositiveIntegerField(default=120, verbose_name='длительность выполнений в секундах')
@@ -30,7 +31,12 @@ class PleasantHabit(Habit):
         verbose_name_plural = 'приятные привычки'
 
     def __str__(self):
-        return f'Приятная привычка {self.action}, место: {self.place}, время: {self.time}'
+        return f'{self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} секунд'
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_pleasant_habit = False
+        self.is_published = False
+        self.save()
 
 
 class GoodHabit(Habit):
@@ -42,6 +48,11 @@ class GoodHabit(Habit):
     class Meta:
         verbose_name = 'полезная привычка'
         verbose_name_plural = 'полезные привычки'
+        ordering = ('time', )
 
     def __str__(self):
-        return f'Полезная привычка {self.action}, место: {self.place}, время: {self.time}'
+        return f'Задание: {self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} секунд (приятное действие: {self.pleasant_habit if self.pleasant_habit else self.reward})'
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_published = False
+        self.save()
