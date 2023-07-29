@@ -8,7 +8,7 @@ from habit_tracker.models import NULLABLE
 
 class UserManager(BaseUserManager):
     def _create_user(self, email, password, **extra_fields):
-        """Создание и сохранение пользователя с электронной почты и паролем"""
+        """Создание и сохранение пользователя с электронной почтой и паролем"""
         if not email:
             raise ValueError('The given email must be set')
 
@@ -41,6 +41,8 @@ class User(AbstractUser):
     """Модель, описывающая пользователя"""
     username = None
     email = models.EmailField(unique=True, verbose_name='почта')
+    tg_username = models.CharField(max_length=150, unique=True, verbose_name='никнейм в телеграме')
+    tg_chat_id = models.CharField(max_length=150, **NULLABLE, verbose_name='ID чата в телеграм')
     name = models.CharField(max_length=50, verbose_name='имя', **NULLABLE)
     phone = models.CharField(max_length=50, verbose_name='телефон', **NULLABLE)
     city = models.CharField(max_length=50, verbose_name='город', **NULLABLE)
@@ -50,3 +52,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+    def update_tg_chat_id(self, tg_chat_id):
+        self.tg_chat_id = tg_chat_id
+        self.save()
