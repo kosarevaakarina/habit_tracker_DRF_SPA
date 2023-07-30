@@ -962,6 +962,162 @@
     }
   },
   {
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+      "action_time": "2023-07-30T16:51:43.237Z",
+      "user": 1,
+      "content_type": 8,
+      "object_id": "42",
+      "object_repr": "Посмотреть мем!, время: 15:16:00, место: Диванчик, выполнить за 100 секунд",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+      "action_time": "2023-07-30T16:51:50.381Z",
+      "user": 1,
+      "content_type": 7,
+      "object_id": "43",
+      "object_repr": "Задание: Посмотреть мем!!!, время: 15:16:00, место: Диванчик, выполнить за 100 секунд (приятное действие: test)",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+      "action_time": "2023-07-30T16:52:13.145Z",
+      "user": 1,
+      "content_type": 12,
+      "object_id": "18",
+      "object_repr": "Задание: Посмотреть мем!!!, время: 15:16:00, место: Диванчик, выполнить за 100 секунд (приятное действие: test): 16 15 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.168Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "4",
+      "object_repr": "* * * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.178Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "3",
+      "object_repr": "0 14 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.181Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "6",
+      "object_repr": "12 15 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.183Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "7",
+      "object_repr": "16 15 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.185Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "11",
+      "object_repr": "48 15 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.187Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "12",
+      "object_repr": "50 18 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.188Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "10",
+      "object_repr": "46 20 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+      "action_time": "2023-07-30T16:53:29.190Z",
+      "user": 1,
+      "content_type": 10,
+      "object_id": "5",
+      "object_repr": "9 20 * * * (m/h/dM/MY/d) Europe/Moscow",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+      "action_time": "2023-07-30T16:53:37.164Z",
+      "user": 1,
+      "content_type": 11,
+      "object_id": "1",
+      "object_repr": "every minute",
+      "action_flag": 3,
+      "change_message": ""
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -1630,14 +1786,6 @@
     }
   },
   {
-    "model": "django_celery_beat.intervalschedule",
-    "pk": 1,
-    "fields": {
-      "every": 1,
-      "period": "minutes"
-    }
-  },
-  {
     "model": "django_celery_beat.crontabschedule",
     "pk": 1,
     "fields": {
@@ -1655,66 +1803,6 @@
     "fields": {
       "minute": "30",
       "hour": "6",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 3,
-    "fields": {
-      "minute": "0",
-      "hour": "14",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 4,
-    "fields": {
-      "minute": "*",
-      "hour": "*",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 5,
-    "fields": {
-      "minute": "9",
-      "hour": "20",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 6,
-    "fields": {
-      "minute": "12",
-      "hour": "15",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 7,
-    "fields": {
-      "minute": "16",
-      "hour": "15",
       "day_of_week": "*",
       "day_of_month": "*",
       "month_of_year": "*",
@@ -1746,46 +1834,10 @@
     }
   },
   {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 10,
-    "fields": {
-      "minute": "46",
-      "hour": "20",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 11,
-    "fields": {
-      "minute": "48",
-      "hour": "15",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
-    "model": "django_celery_beat.crontabschedule",
-    "pk": 12,
-    "fields": {
-      "minute": "50",
-      "hour": "18",
-      "day_of_week": "*",
-      "day_of_month": "*",
-      "month_of_year": "*",
-      "timezone": "Europe/Moscow"
-    }
-  },
-  {
     "model": "django_celery_beat.periodictasks",
     "pk": 1,
     "fields": {
-      "last_update": "2023-07-29T15:51:02.610Z"
+      "last_update": "2023-07-30T16:53:37.173Z"
     }
   },
   {
