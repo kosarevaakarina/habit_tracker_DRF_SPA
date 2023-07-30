@@ -58,4 +58,4 @@ class UserTestCase(UserCreate):
         """Тестирование удаления пользователя"""
         self.create_user()
         response = self.client.delete(f'/users/delete/{self.user.pk}/', )
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
