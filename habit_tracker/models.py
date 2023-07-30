@@ -41,17 +41,19 @@ class PleasantHabit(Habit):
 
 class GoodHabit(Habit):
     """Модель полезной привычки"""
-    pleasant_habit = models.ForeignKey(PleasantHabit, on_delete=models.CASCADE, verbose_name='приятная привычка', **NULLABLE)
+    pleasant_habit = models.ForeignKey(PleasantHabit, on_delete=models.CASCADE, verbose_name='приятная привычка',
+                                       **NULLABLE)
     reward = models.TextField(verbose_name='вознаграждение', **NULLABLE)
     frequency = models.CharField(max_length=100, default='EVERY DAY', choices=FREQUENCY, verbose_name='Периодичность')
 
     class Meta:
         verbose_name = 'полезная привычка'
         verbose_name_plural = 'полезные привычки'
-        ordering = ('time', )
+        ordering = ('time',)
 
     def __str__(self):
-        return f'Задание: {self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} секунд (приятное действие: {self.pleasant_habit if self.pleasant_habit else self.reward})'
+        return f'Задание: {self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} секунд ' \
+               f'(приятное действие: {self.pleasant_habit if self.pleasant_habit else self.reward})'
 
     def delete(self, using=None, keep_parents=False):
         self.is_published = False
