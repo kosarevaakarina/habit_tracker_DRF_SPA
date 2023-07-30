@@ -46,6 +46,7 @@ class User(AbstractUser):
     name = models.CharField(max_length=50, verbose_name='имя', **NULLABLE)
     phone = models.CharField(max_length=50, verbose_name='телефон', **NULLABLE)
     city = models.CharField(max_length=50, verbose_name='город', **NULLABLE)
+    avatar = models.ImageField(verbose_name='фото', **NULLABLE)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

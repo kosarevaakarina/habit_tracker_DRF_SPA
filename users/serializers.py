@@ -14,7 +14,6 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def save(self, *args, **kwargs):
         """Метод для сохранения нового пользователя"""
         # Создаём объект класса User
-        username = self.validated_data['tg_username'] if 'tg_username' in self.validated_data else None
         name = self.validated_data['name'] if 'name' in self.validated_data else None
         phone = self.validated_data['phone'] if 'phone' in self.validated_data else None
         city = self.validated_data['city'] if 'city' in self.validated_data else None
@@ -22,7 +21,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
         user = User.objects.create(
             email=self.validated_data['email'],
-            username=username,
+            tg_username=self.validated_data['tg_username'],
             name=name,
             phone=phone,
             city=city,
