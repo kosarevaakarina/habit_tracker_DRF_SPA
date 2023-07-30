@@ -4,11 +4,11 @@ _Для запуска приложения необходимо настрои�
 команд:_
 
 ```
-python -m venv venv
+python3 -m venv venv
 
 source venv/bin/activate
 
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 
 _Для запуска приложения:_
