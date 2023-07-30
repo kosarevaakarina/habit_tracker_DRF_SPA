@@ -41,7 +41,8 @@ class PleasantHabit(Habit):
 
 class GoodHabit(Habit):
     """Модель полезной привычки"""
-    pleasant_habit = models.ForeignKey(PleasantHabit, on_delete=models.CASCADE, verbose_name='приятная привычка', **NULLABLE)
+    pleasant_habit = models.ForeignKey(PleasantHabit, on_delete=models.CASCADE, verbose_name='приятная привычка',
+                                       **NULLABLE)
     reward = models.TextField(verbose_name='вознаграждение', **NULLABLE)
     frequency = models.CharField(max_length=100, default='EVERY DAY', choices=FREQUENCY, verbose_name='Периодичность')
 
