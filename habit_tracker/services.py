@@ -29,7 +29,7 @@ class MailingHabitService:
             day_of_week = '*'
 
         elif self.habit.frequency == 'EVERY OTHER DAY':
-            day_of_week = f'*/2'
+            day_of_week = '*/2'
 
         elif self.habit.frequency == 'WEEK':
             day_of_week = self.habit.date.weekday()
