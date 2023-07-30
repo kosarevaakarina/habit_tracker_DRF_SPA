@@ -28,7 +28,8 @@ class GoodHabitCreateSerializer(serializers.ModelSerializer):
             pleasant_habit = PleasantHabit.objects.filter(id=pleasant_habit_id).first()
             # Проверка признака приятной привычки
             if pleasant_habit.is_pleasant_habit is not True:
-                raise serializers.ValidationError('Related habits can only include habits with a sign of a pleasant habit')
+                raise serializers.ValidationError(
+                    'Related habits can only include habits with a sign of a pleasant habit')
         # Проверка того, чтобы была выбрана или привычка, или действие
         if attrs.get('pleasant_habit') is None and attrs.get('reward') is None:
             raise serializers.ValidationError("You must choose a related habit or specify a reward!")

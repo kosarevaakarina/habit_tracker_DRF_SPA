@@ -52,8 +52,8 @@ class GoodHabit(Habit):
         ordering = ('time',)
 
     def __str__(self):
-        return f'Задание: {self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} секунд ' \
-               f'(приятное действие: {self.pleasant_habit if self.pleasant_habit else self.reward})'
+        return f'Задание: {self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} ' \
+               f'секунд (приятное действие: {self.pleasant_habit if self.pleasant_habit else self.reward})'
 
     def delete(self, using=None, keep_parents=False):
         self.is_published = False
