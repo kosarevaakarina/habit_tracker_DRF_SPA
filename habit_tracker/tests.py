@@ -29,7 +29,7 @@ class UserCreate(APITestCase):
         self.user.set_password('123Qaz')
         self.user.save()
         response = self.client.post(
-            '/users/api/token/',
+            '/users/token/',
             {
                 'email': self.email,
                 'password': '123Qaz'
@@ -99,6 +99,23 @@ class PleasantHabitTestCase(UserCreate):
                   'action': 'TestAction',
                   'duration': 100,
                   'is_pleasant_habit': True}]}
+        )
+
+    def test_get_pleasant_habit_is_published(self):
+        """Тестирование просмотра приятных привычек"""
+        self.pleasant_habit_for_auth_user()
+        response = self.client.get('/pleasant-habit-is-published/', )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.json(),
+            [{
+                'place': 'TestPlace',
+                'time': '07:00:00',
+                'action': 'TestAction',
+                'duration': 100,
+                'is_pleasant_habit': True
+            }]
+
         )
 
     def test_retrieve_pleasant_habit(self):
@@ -201,6 +218,26 @@ class GoodHabitTestCase(UserCreate):
                           'frequency': 'EVERY DAY',
                           'pleasant_habit': None,
                           'reward': 'TestReward'}]}
+
+        )
+
+    def test_get_good_habit_is_published(self):
+        """Тестирование просмотра полезных привычек"""
+        self.good_habit_for_auth_user()
+        response = self.client.get('/good-habit-is-published/', )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.json(),
+            [{
+                'user': self.user.pk,
+                'place': 'HabitPlace',
+                'time': '19:00:00',
+                'action': 'HabitAction',
+                'duration': 20,
+                'frequency': 'EVERY DAY',
+                'pleasant_habit': None,
+                'reward': 'TestReward'
+            }]
 
         )
 

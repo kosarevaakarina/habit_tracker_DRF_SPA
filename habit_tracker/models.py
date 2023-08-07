@@ -1,5 +1,5 @@
+from django.conf import settings
 from django.db import models
-from config import settings
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -29,6 +29,7 @@ class PleasantHabit(Habit):
     class Meta:
         verbose_name = 'приятная привычка'
         verbose_name_plural = 'приятные привычки'
+        ordering = ('time',)
 
     def __str__(self):
         return f'{self.action}, время: {self.time}, место: {self.place}, выполнить за {self.duration} секунд'

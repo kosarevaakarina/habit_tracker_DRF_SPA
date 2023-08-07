@@ -5,11 +5,11 @@ from users.views import UserListAPIView, UserRetrieveAPIView, UserCreateAPIView,
 urlpatterns = [
     path('', UserListAPIView.as_view(), name='user_list'),
     path('<int:pk>/', UserRetrieveAPIView.as_view(), name='user_detail'),
-    path('create/', UserCreateAPIView.as_view(), name='user_create'),
+    path('register/', UserCreateAPIView.as_view(), name='user_create'),
     path('update/<int:pk>/', UserUpdateAPIView.as_view(), name='user_update'),
     path('delete/<int:pk>/', UserDestroyAPIView.as_view(), name='user_delete'),
 
     # authenticated
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]

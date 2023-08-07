@@ -12,5 +12,4 @@ django-celery-beat
 aiogram
 flake8
 django-cors-headers
-django-filter
 pillow
