@@ -9,7 +9,6 @@ class HabitDurationValidator:
 
     def __call__(self, value):
         duration = value.get('duration')
-        # print(duration)
         if duration > 120:
             raise serializers.ValidationError('The execution time of the habit should be no more than 120 seconds.')
         if duration == 0:

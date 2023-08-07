@@ -13,7 +13,8 @@ class UserManager(BaseUserManager):
             raise ValueError('The given email must be set')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+        tg_username = 'username'
+        user = self.model(email=email, tg_username=tg_username, **extra_fields)
         user.password = make_password(password)
         user.save(using=self._db)
         return user
@@ -56,3 +57,7 @@ class User(AbstractUser):
     def update_tg_chat_id(self, tg_chat_id):
         self.tg_chat_id = tg_chat_id
         self.save()
+
+    class Meta:
+        verbose_name = 'пользователь'
+        verbose_name_plural = 'пользователи'

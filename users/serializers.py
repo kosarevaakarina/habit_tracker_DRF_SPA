@@ -13,30 +13,23 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     def save(self, *args, **kwargs):
         """Метод для сохранения нового пользователя"""
-        # Создаём объект класса User
-        name = self.validated_data['name'] if 'name' in self.validated_data else None
-        phone = self.validated_data['phone'] if 'phone' in self.validated_data else None
-        city = self.validated_data['city'] if 'city' in self.validated_data else None
-        avatar = self.validated_data['avatar'] if 'avatar' in self.validated_data else None
-
-        user = User.objects.create(
-            email=self.validated_data['email'],
-            tg_username=self.validated_data['tg_username'],
-            name=name,
-            phone=phone,
-            city=city,
-            avatar=avatar,
-        )
         # Проверяем на валидность пароли
         password = self.validated_data['password']
         password2 = self.validated_data['password2']
-        # Проверяем совпадают ли пароли
+        # Если пароли не валидны, то возбуждаем ошибку
         if password != password2:
-            # Если нет, то выводим ошибку
-            raise serializers.ValidationError({password: "Пароль не совпадает"})
+            raise serializers.ValidationError("Password doesn't match")
+        # Cоздаем пользователя
+        user = User.objects.create(
+            email=self.validated_data.get('email'),
+            tg_username=self.validated_data.get('tg_username'),
+            name=self.validated_data.get('name', None),
+            phone=self.validated_data.get('phone', None),
+            city=self.validated_data.get('city', None),
+            avatar=self.validated_data.get('avatar', None),
+        )
         # Сохраняем пароль
         user.set_password(password)
-
         user.save()
         return user
 
