@@ -22,7 +22,7 @@ class PleasantHabitViewSet(viewsets.ModelViewSet):
         if user.is_staff:
             return PleasantHabit.objects.all()
         else:
-            return PleasantHabit.objects.filter(user=user, is_pleasant_habit=True)
+            return PleasantHabit.objects.filter(user=user, is_pleasant_habit=True, is_published=True)
 
     def perform_create(self, serializer):
         """При создании приятной привычки присваивается автор"""

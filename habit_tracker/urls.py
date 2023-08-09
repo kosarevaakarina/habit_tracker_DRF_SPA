@@ -9,7 +9,7 @@ router = DefaultRouter()
 router.register(r'pleasant-habit', PleasantHabitViewSet, basename='pleasant_habit')
 
 urlpatterns = [
-                    path('pleasant-habit-is-published/', PleasantPublishedHabitListAPIViewSet.as_view(),
+                  path('pleasant-habit-is-published/', PleasantPublishedHabitListAPIViewSet.as_view(),
                        name='pleasant_habit_is_published'),
                   path('good-habit/', GoodHabitListAPIView.as_view(), name='good_habit_list'),
                   path('good-habit-is-published/', GoodHabitIsPublishedListAPIView.as_view(),
