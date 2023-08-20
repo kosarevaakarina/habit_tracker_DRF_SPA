@@ -1,5 +1,11 @@
+import os
 from aiogram import Bot, Dispatcher, executor
-from config.settings import TELEGRAM_BOT_API
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Telegram bot api
+TELEGRAM_BOT_API = os.getenv("TELEGRAM_BOT_API")
 
 bot = Bot(token=TELEGRAM_BOT_API)
 dp = Dispatcher(bot=bot)

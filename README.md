@@ -32,6 +32,42 @@
 * Полезные привычки
 * Пользователь
 ---
+### Запуск проекта в Docker:
+_Для работы с переменными окружениями необходимо создать файл .env и заполнить его согласно файлу .env.example:_
+```
+#Email
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
+
+#Celery
+CELERY_BROKER_URL=redis://redis_habit:6379
+CELERY_RESULT_BACKEND=redis://redis_habit:6379
+
+#Telegram bot
+TELEGRAM_BOT_API=
+
+#Database
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_HOST='db_habit'
+POSTGRES_PORT=5432
+POSTGRES_HOST_AUTH_METHOD=trust
+
+#Secret key
+SECRET_KEY=
+```
+_Для создания образа из Dockerfile и запуска контейнера запустить команду:_
+```
+docker-compose up --build
+```
+_или_
+```
+docker-compose up -d --build
+```
+_Второй вариант для запуска в фоновом режиме._
+
+### Запуск приложения в локальной сети:
 _Для запуска проекта необходимо клонировать репозиторий и создать и активировать виртуальное окружение:_ 
 ```
 python3 -m venv venv
@@ -42,8 +78,29 @@ _Установить зависимости:_
 ```
 pip install -r requirements.txt
 ```
-_Для работы с переменными окружениями необходимо создать файл .env и заполнить его согласно файлу .env.sample_
+_Для работы с переменными окружениями необходимо создать файл .env и заполнить его согласно файлу .env.sample:_
+```
+#Email
+EMAIL_HOST_USER=
+EMAIL_HOST_PASSWORD=
 
+#Celery
+CELERY_BROKER_URL=redis://localhost:6379
+CELERY_RESULT_BACKEND=redis://localhost:6379
+
+#Telegram bot
+TELEGRAM_BOT_API=
+
+#Database
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_HOST=127.0.0.1
+POSTGRES_PORT=5432
+
+#Secret key
+SECRET_KEY=
+```
 _Выполнить миграции:_
 ```
 python3 manage.py migrate

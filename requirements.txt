@@ -13,3 +13,4 @@ aiogram
 flake8
 django-cors-headers
 pillow
+gunicorn
