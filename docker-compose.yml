@@ -6,8 +6,10 @@ services:
     image: postgres:14-alpine
     user: postgres
     container_name: db_habit
-    env_file:
-      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - pg_data:/var/lib/postgresql/data
       - ./postgresql.conf:/etc/postgresql/postgresql.conf
@@ -25,6 +27,11 @@ services:
     command: redis-server --save 20 1 --loglevel warning
     ports:
       - "6379:6379"
+    healthcheck:
+      test: redis-cli ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   app_habit:
     build: .
@@ -33,7 +40,7 @@ services:
       db_habit:
         condition: service_healthy
       redis_habit:
-        condition: service_started
+        condition: service_healthy
     env_file:
       - .env
     ports:
@@ -43,7 +50,6 @@ services:
       - ./static:/app/static
     command: >
       bash -c "python manage.py collectstatic --no-input
-      && python manage.py makemigrations
       && python manage.py migrate
       && python manage.py fill
       && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
